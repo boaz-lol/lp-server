@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+bootJar { enabled = false }
+jar { enabled = true }
+
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+}
+
+dependencies {
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+}
