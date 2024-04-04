@@ -34,6 +34,6 @@ class AccountEntity(
     var isCertificatedEMail: Boolean = false
 ) : BaseEntity() {
     fun to(): Account {
-        return Account(id, email, password, riotName, riotTag, riotId, isAgreeToPersonalInfo, isAgreeToEmail, isCertificatedEMail)
+        return Account(id!!, email, password, riotName, riotTag, riotId, isAgreeToPersonalInfo, isAgreeToEmail, isCertificatedEMail)
     }
 }
