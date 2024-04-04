@@ -8,4 +8,6 @@ jar.enabled = true
 
 
 dependencies {
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
 }
