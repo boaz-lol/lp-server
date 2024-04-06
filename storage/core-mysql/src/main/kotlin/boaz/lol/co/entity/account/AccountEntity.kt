@@ -10,28 +10,28 @@ import jakarta.persistence.Table
 @Table(name="account")
 class AccountEntity(
     @Column
-    var email: String,
+    val email: String,
 
     @Column
-    var password: String,
+    val password: String,
 
     @Column
-    var riotName: String,
+    val riotName: String,
 
     @Column
-    var riotTag: String,
+    val riotTag: String,
 
     @Column
-    var riotId: String,
+    val riotId: String,
 
     @Column
-    var isAgreeToPersonalInfo: Boolean = false,
+    val isAgreeToPersonalInfo: Boolean = false,
 
     @Column
-    var isAgreeToEmail: Boolean = false,
+    val isAgreeToEmail: Boolean = false,
 
     @Column
-    var isCertificatedEMail: Boolean = false
+    val isCertificatedEMail: Boolean = false
 ) : BaseEntity() {
     fun to(): Account {
         return Account(id!!, email, password, riotName, riotTag, riotId, isAgreeToPersonalInfo, isAgreeToEmail, isCertificatedEMail)
