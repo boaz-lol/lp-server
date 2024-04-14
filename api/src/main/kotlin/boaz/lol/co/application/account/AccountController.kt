@@ -1,4 +1,4 @@
-package boaz.lol.co.account.account
+package boaz.lol.co.application.account
 
 import org.springframework.stereotype.Controller
 

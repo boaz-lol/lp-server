@@ -1,18 +1,13 @@
 package boaz.lol.co.storage.entity.version
 
 import boaz.lol.co.storage.common.BaseEntity
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.OneToOne
-import jakarta.persistence.Table
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "champion_status")
 class ChampionStatusEntity (
-    @OneToOne(
-        mappedBy = "champion"
-    )
-    val champion: VersionChampionEntity,
+    @Column
+    val champion: Long,
 
     @Column
     val attack: Int,
