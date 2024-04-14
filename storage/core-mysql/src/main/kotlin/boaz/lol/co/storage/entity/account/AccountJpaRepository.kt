@@ -1,4 +1,4 @@
-package boaz.lol.co.entity.account
+package boaz.lol.co.storage.entity.account
 
 import org.springframework.data.jpa.repository.JpaRepository
 

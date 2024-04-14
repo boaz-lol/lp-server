@@ -1,6 +1,6 @@
-package boaz.lol.co.entity.account
+package boaz.lol.co.storage.entity.account
 
-import boaz.lol.co.common.BaseEntity
+import boaz.lol.co.storage.common.BaseEntity
 import boaz.lol.co.domains.account.Account
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

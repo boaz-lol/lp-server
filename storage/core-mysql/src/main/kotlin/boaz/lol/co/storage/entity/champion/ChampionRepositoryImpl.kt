@@ -1,4 +1,4 @@
-package boaz.lol.co.entity.champion
+package boaz.lol.co.storage.entity.champion
 
 import boaz.lol.co.domains.champion.ChampionRepository
 import org.springframework.stereotype.Repository

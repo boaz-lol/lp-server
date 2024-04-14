@@ -1,4 +1,4 @@
-package boaz.lol.co.common
+package boaz.lol.co.storage.common
 
 import jakarta.persistence.*
 import org.hibernate.annotations.CreationTimestamp

@@ -1,6 +1,6 @@
-package boaz.lol.co.entity.champion
+package boaz.lol.co.storage.entity.champion
 
-import boaz.lol.co.common.BaseEntity
+import boaz.lol.co.storage.common.BaseEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Table

@@ -1,4 +1,4 @@
-package boaz.lol.co.entity.champion
+package boaz.lol.co.storage.entity.champion
 
 import org.springframework.data.jpa.repository.JpaRepository
 

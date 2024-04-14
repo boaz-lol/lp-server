@@ -1,4 +1,4 @@
-package boaz.lol.co.entity.account
+package boaz.lol.co.storage.entity.account
 
 import boaz.lol.co.domains.account.Account
 import boaz.lol.co.domains.account.AccountRepository
