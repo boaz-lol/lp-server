@@ -13,7 +13,7 @@ abstract class BaseEntity {
 
     @CreationTimestamp
     @Column(updatable = false)
-    val createdAt: LocalDateTime? = null
+    val createdAt: LocalDateTime = LocalDateTime.now()
 
     @UpdateTimestamp
     @Column
