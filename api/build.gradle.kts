@@ -8,7 +8,7 @@ jar.enabled = false
 
 
 dependencies {
-    runtimeOnly(project(":storage:core-mysql"))
+    implementation(project(":storage:core-mysql"))
     implementation(project(":domain"))
     implementation("org.springframework.boot:spring-boot-starter-web")
 }
