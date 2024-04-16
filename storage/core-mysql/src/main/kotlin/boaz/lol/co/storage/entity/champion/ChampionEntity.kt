@@ -1,5 +1,6 @@
 package boaz.lol.co.storage.entity.champion
 
+import boaz.lol.co.domains.champion.Champion
 import boaz.lol.co.storage.common.BaseEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -27,4 +28,7 @@ class ChampionEntity(
     @Column
     val isActive: Boolean
 ): BaseEntity() {
+    fun to(): Champion {
+        return Champion(id, name, detail, type, consumeType, mainLine, isActive)
+    }
 }

@@ -31,9 +31,21 @@ class AccountEntity(
     val isAgreeToEmail: Boolean = false,
 
     @Column
-    val isCertificatedEMail: Boolean = false
+    val isCertificatedEmail: Boolean = false
 ) : BaseEntity() {
     fun to(): Account {
-        return Account(id, email, password, riotName, riotTag, riotId, isAgreeToPersonalInfo, isAgreeToEmail, isCertificatedEMail)
+        return Account(id, email, password, riotName, riotTag, riotId, isAgreeToPersonalInfo, isAgreeToEmail, isCertificatedEmail)
     }
+
+    constructor(account: Account) : this(
+        email=account.email,
+        password = account.password,
+        riotName = account.riotName,
+        riotTag = account.riotTag,
+        riotId = account.riotId,
+        isAgreeToPersonalInfo = account.isAgreeToPersonalInfo,
+        isAgreeToEmail = account.isAgreeToEmail,
+        isCertificatedEmail = account.isCertificatedEmail
+    )
+
 }
