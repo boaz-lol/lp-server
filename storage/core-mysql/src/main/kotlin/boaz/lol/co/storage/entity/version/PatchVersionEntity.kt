@@ -4,7 +4,7 @@ import boaz.lol.co.storage.common.BaseEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
-import java.time.LocalDateTime
+import java.time.LocalDate
 
 @Entity
 @Table(name="patch_version")
@@ -16,9 +16,9 @@ class PatchVersionEntity(
     val subVersion: String,
 
     @Column
-    val expectedAt: LocalDateTime,
+    val expectedAt: LocalDate,
 
     @Column
-    val appliedAt: LocalDateTime
+    val appliedAt: LocalDate
 ): BaseEntity() {
 }
