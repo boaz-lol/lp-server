@@ -15,12 +15,10 @@ class ChampionSimpleController(
     private val championService: ChampionService
 ) {
     @GetMapping()
-    fun championFindAll(): ResponseEntity<List<Champion>> {
-        return ResponseEntity.ok(championService.getChampionList());
-    }
+    fun championFindAll(): ResponseEntity<List<Champion>> =
+        ResponseEntity.ok().body(championService.getChampionList())
 
     @GetMapping("/{id}")
-    fun championFindById(@PathVariable id: Long): ResponseEntity<Champion> {
-        return ResponseEntity.ok(championService.getSingleChampion(id))
-    }
+    fun championFindById(@PathVariable id: Long): ResponseEntity<Champion> =
+        ResponseEntity.ok(championService.getSingleChampion(id))
 }
