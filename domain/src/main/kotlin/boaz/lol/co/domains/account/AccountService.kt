@@ -1,4 +1,4 @@
-package boaz.lol.co.application.account
+package boaz.lol.co.domains.account
 
 import boaz.lol.co.domains.account.Account
 interface AccountService {
