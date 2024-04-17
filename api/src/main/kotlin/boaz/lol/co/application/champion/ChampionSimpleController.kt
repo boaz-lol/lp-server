@@ -1,6 +1,6 @@
 package boaz.lol.co.application.champion
 
-import boaz.lol.co.domains.champion.Champion
+import boaz.lol.co.application.champion.response.ChampionSimpleRes
 import boaz.lol.co.domains.champion.ChampionService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -14,10 +14,10 @@ class ChampionSimpleController(
     private val championService: ChampionService
 ) {
     @GetMapping
-    fun championFindAll(): ResponseEntity<List<Champion>> =
-        ResponseEntity.ok().body(championService.getChampionList())
+    fun championFindAll(): ResponseEntity<List<ChampionSimpleRes>> =
+        ResponseEntity.ok().body(championService.getChampionList().map { ChampionSimpleRes(it) })
 
     @GetMapping("/{id}")
-    fun championFindById(@PathVariable id: Long): ResponseEntity<Champion> =
-        ResponseEntity.ok(championService.getSingleChampion(id))
+    fun championFindById(@PathVariable id: Long): ResponseEntity<ChampionSimpleRes> =
+        ResponseEntity.ok(ChampionSimpleRes(championService.getSingleChampion(id)))
 }
