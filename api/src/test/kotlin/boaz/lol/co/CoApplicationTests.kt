@@ -16,7 +16,7 @@ class CoApplicationTests (
 	@Test
 	fun contextLoads() {
 		val beanNames = context.beanDefinitionNames
-		// beanNames.forEach { println(it) }
+		beanNames.forEach { println(it) }
 	}
 
 	@Test
