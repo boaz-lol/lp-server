@@ -4,7 +4,7 @@ include (
     // "common",
     "domain",
     "storage:core-mysql",
-    "api",
+    "api"
 
     // "mail"
 )
