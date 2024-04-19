@@ -1,4 +1,4 @@
-package boaz.lol.co.application.account
+package boaz.lol.co.application.account.service
 
 import boaz.lol.co.domains.account.Account
 import boaz.lol.co.domains.account.AccountRepository
