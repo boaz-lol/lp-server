@@ -5,6 +5,7 @@ include (
     "domain",
     "storage:core-mysql",
     "api",
+    "api:admin"
 
     // "mail"
 )

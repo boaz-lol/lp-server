@@ -45,4 +45,6 @@ storage/core-mysql/src/main/resources/application.properties
 
 api/src/main/resources/application.yaml
 
+api/admin/src/main/resources/application.yaml
+
 storage/core-mysql/src/main/resources/application-mysql.yaml
