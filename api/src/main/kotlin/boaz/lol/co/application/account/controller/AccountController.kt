@@ -2,7 +2,7 @@ package boaz.lol.co.application.account.controller
 
 import boaz.lol.co.domains.account.AccountService
 import boaz.lol.co.application.account.dto.*
-import boaz.lol.co.application.account.service.AccountServiceImpl
+import boaz.lol.co.application.account.service.AccountService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
