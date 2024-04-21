@@ -7,4 +7,6 @@ bootJar.enabled = false
 jar.enabled = true
 
 dependencies {
+    implementation(project(":api"))
+    implementation("org.springframework.boot:spring-boot-starter")
 }
