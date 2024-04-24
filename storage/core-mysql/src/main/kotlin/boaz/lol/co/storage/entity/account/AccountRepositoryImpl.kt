@@ -12,4 +12,8 @@ class AccountRepositoryImpl(
     override fun getById(id: Long): Optional<Account> {
         return accountJpaRepository.findById(id).map(AccountEntity::to);
     }
+
+    override fun findByEmail(email: String): Optional<Account> {
+        return accountJpaRepository.findByEmail(email).map(AccountEntity::to);
+    }
 }
