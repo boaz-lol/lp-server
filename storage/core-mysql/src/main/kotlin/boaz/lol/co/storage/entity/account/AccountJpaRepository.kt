@@ -6,5 +6,5 @@ import java.util.Optional
 
 @Repository
 interface AccountJpaRepository : JpaRepository<AccountEntity, Long> {
-    fun findByEmail(email: String): Optional<AccountEntity>
+    fun getByEmail(email: String): Boolean
 }

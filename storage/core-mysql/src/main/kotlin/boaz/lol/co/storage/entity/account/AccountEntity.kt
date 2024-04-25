@@ -38,7 +38,7 @@ class AccountEntity(
     }
 
     constructor(account: Account) : this(
-        email=account.email,
+        email = account.email,
         password = account.password,
         riotName = account.riotName,
         riotTag = account.riotTag,
