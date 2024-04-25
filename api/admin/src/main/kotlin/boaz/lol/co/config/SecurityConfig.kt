@@ -1,5 +1,6 @@
-package boaz.lol.co.jwt
+package boaz.lol.co.config
 
+import boaz.lol.co.jwt.JwtTokenFilter
 import boaz.lol.co.jwt.JwtTokenProvider
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -13,19 +14,21 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig(private val jwtTokenProvider: JwtTokenProvider) {
-
+class SecurityConfig(
+    private val jwtTokenProvider: JwtTokenProvider
+) {
     @Bean
-    fun filterChain(http: HttpSecurity): SecurityFilterChain {
+    fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
             .csrf().disable()
-            .httpBasic().disable()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-            .authorizeRequests()
-            .antMatchers("/account/signup", "/account/signin").permitAll()
-            .anyRequest().authenticated()
-            .and()
+            .authorizeHttpRequests { requests ->
+                requests
+                    .requestMatchers("account/signup").permitAll()
+                    .requestMatchers("account/signin").permitAll()
+                    .anyRequest().authenticated()
+            }
             .addFilterBefore(JwtTokenFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter::class.java)
 
         return http.build()
