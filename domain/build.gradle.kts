@@ -7,4 +7,7 @@ bootJar.enabled = false
 jar.enabled = true
 
 dependencies {
+    implementation(project(":api"))
+    implementation(project(":storage:core-mysql"))
+    implementation("org.springframework.boot:spring-boot-starter")
 }
