@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class AccountServiceImpl(
-    var accountRepository: AccountRepository
+    private val accountRepository: AccountRepository,
 ) : AccountService {
 
     override fun register(accountCreate: AccountCreate): Account {
