@@ -17,6 +17,9 @@ import java.util.*
 import java.util.stream.Collectors
 import javax.crypto.SecretKey
 
+class JwtTokenProvider
+
+/*
 @Component
 class JwtTokenProvider @Autowired constructor(
     @Value("\${jwt.secret-key}") secretKey: String
@@ -103,3 +106,4 @@ class JwtTokenProvider @Autowired constructor(
     }
 
 }
+ */

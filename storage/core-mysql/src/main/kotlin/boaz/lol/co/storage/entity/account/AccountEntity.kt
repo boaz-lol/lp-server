@@ -2,6 +2,7 @@ package boaz.lol.co.storage.entity.account
 
 import boaz.lol.co.storage.common.BaseEntity
 import boaz.lol.co.domains.account.Account
+import boaz.lol.co.domains.account.AccountCreate
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
@@ -38,6 +39,17 @@ class AccountEntity(
     }
 
     constructor(account: Account) : this(
+        email = account.email,
+        password = account.password,
+        riotName = account.riotName,
+        riotTag = account.riotTag,
+        riotId = account.riotId,
+        isAgreeToPersonalInfo = account.isAgreeToPersonalInfo,
+        isAgreeToEmail = account.isAgreeToEmail,
+        isCertificatedEmail = account.isCertificatedEmail
+    )
+
+    constructor(account: AccountCreate) : this(
         email = account.email,
         password = account.password,
         riotName = account.riotName,
