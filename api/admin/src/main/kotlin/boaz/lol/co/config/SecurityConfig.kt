@@ -29,7 +29,7 @@ class SecurityConfig(
                     .requestMatchers("account/signin").permitAll()
                     .anyRequest().authenticated()
             }
-            .addFilterBefore(JwtTokenFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter::class.java)
+            // .addFilterBefore(JwtTokenFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter::class.java)
 
         return http.build()
     }
