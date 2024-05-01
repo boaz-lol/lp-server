@@ -2,4 +2,4 @@ package boaz.lol.co.storage.entity.version
 
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface PassiveJpaRepository : JpaRepository<Long, ChampionPassiveEntity>
+interface PassiveJpaRepository : JpaRepository<ChampionPassiveEntity, Long>
