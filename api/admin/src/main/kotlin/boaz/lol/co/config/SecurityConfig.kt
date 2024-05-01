@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
-    private val jwtTokenProvider: JwtTokenProvider
+    // private val jwtTokenProvider: JwtTokenProvider
 ) {
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
