@@ -1,6 +1,7 @@
 package boaz.lol.co.application.account.dto
 
-// 클라이언트 응답용 DTO
+import boaz.lol.co.domains.account.Account
+
 data class AccountRes(
     val id: Long,
     val email: String,
@@ -10,4 +11,19 @@ data class AccountRes(
     val isAgreeToPersonalInfo: Boolean,
     val isAgreeToEmail: Boolean,
     val isCertificatedEmail: Boolean
-)
+) {
+    companion object {
+        fun from(account: Account) : AccountRes {
+            return AccountRes(
+                id = account.id,
+                email = account.email,
+                riotName = account.riotName,
+                riotTag = account.riotTag,
+                riotId = account.riotId,
+                isAgreeToPersonalInfo = account.isAgreeToPersonalInfo,
+                isAgreeToEmail = account.isAgreeToEmail,
+                isCertificatedEmail = account.isCertificatedEmail
+            )
+        }
+    }
+}
