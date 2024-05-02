@@ -5,7 +5,9 @@ include (
     "domain",
     "storage:core-mysql",
     "api",
-    "api:admin"
+    "api:admin",
+    "common",
+    "common:enum"
 
     // "mail"
 )
