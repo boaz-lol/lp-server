@@ -1,5 +1,6 @@
 package boaz.lol.co.config
 
+import boaz.lol.co.jwt.JwtProvider
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -12,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
-    // private val jwtTokenProvider: JwtTokenProvider
+    private val jwtProvider: JwtProvider
 ) {
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
@@ -33,6 +34,9 @@ class SecurityConfig(
             }
             .authorizeHttpRequests { requests ->
                 requests.anyRequest().permitAll()
+            }
+            .run {
+                JwtSecurityConfig(jwtProvider).configure(http)
             }
 
         return http.build()

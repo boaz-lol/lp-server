@@ -1,13 +1,15 @@
 package boaz.lol.co.jwt
 
 import boaz.lol.co.enums.Role
-import io.jsonwebtoken.Claims
-import io.jsonwebtoken.Header
-import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.SignatureAlgorithm
+import io.jsonwebtoken.*
 import io.jsonwebtoken.io.Decoders
 import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.Authentication
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import org.springframework.stereotype.Component
 import java.security.Key
 import java.util.*
@@ -19,7 +21,7 @@ class JwtProvider (
 ) {
     companion object {
         const val AUTHORITIES_KEY = "role"
-        const val BEARER_TYPE = "Bearer"
+        const val BEARER_TYPE = "Bearer "
     }
 
     private val key: Key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey))
@@ -32,11 +34,43 @@ class JwtProvider (
         claims.setSubject(subject)
         claims[AUTHORITIES_KEY] = role.stream().map { it -> it.name }.toList().joinToString(",")
 
-        return Jwts.builder()
+        return BEARER_TYPE + Jwts.builder()
             .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
             .setClaims(claims)
             .signWith(key)
             .compact();
+    }
+
+    fun getAuthentication(accessToken: String): Authentication {
+        val claims: Claims = parseClaims(accessToken)
+        val authorities: Collection<GrantedAuthority> = claims[AUTHORITIES_KEY].toString().split(",")
+            .map { it -> SimpleGrantedAuthority(it) }.toList()
+        return UsernamePasswordAuthenticationToken(claims.subject.toLong(), "", authorities)
+    }
+
+    fun parseClaims(accessToken: String) : Claims {
+        try {
+            return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(accessToken).body
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    fun getExpiration(accessToken: String): Long {
+        val expirationDate = Jwts.parserBuilder()
+            .setSigningKey(key)
+            .build().parseClaimsJws(accessToken)
+            .body.expiration
+        return expirationDate.time - Date().time
+    }
+
+    fun validateToken(token: String): Boolean {
+        try {
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token)
+            return true
+        } catch (e: ExpiredJwtException) {
+            throw e
+        }
     }
 
 
