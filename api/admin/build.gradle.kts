@@ -8,8 +8,6 @@ jar.enabled = true
 
 
 dependencies {
-    implementation(project(":domain"))
-    implementation(project(":common:enum"))
 
     // Spring
     implementation("org.springframework.boot:spring-boot-starter-security")
