@@ -1,11 +1,7 @@
 package boaz.lol.co.application.account
 
-import boaz.lol.co.application.account.dto.AccountRes
-import boaz.lol.co.domains.account.Account
-import boaz.lol.co.domains.account.AccountCreate
-import boaz.lol.co.domains.account.AccountRepository
-import boaz.lol.co.domains.account.AccountService
-import boaz.lol.co.domains.account.base.Role
+import boaz.lol.co.domains.account.*
+import boaz.lol.co.service.JwtService
 import boaz.lol.co.service.PasswordService
 import org.springframework.stereotype.Service
 
@@ -19,8 +15,19 @@ class AccountServiceImpl(
         if (accountRepository.existByEmail(accountCreate.email)) {
             throw IllegalArgumentException("이미 존재하는 이메일입니다.")
         }
-        accountCreate.encryptPassword(passwordService.encryptPassword(accountCreate.password))
+        else {
+            accountCreate.encryptPassword(passwordService.encryptPassword(accountCreate.password))
+        }
         return accountRepository.add(accountCreate)
+    }
+
+    override fun authorize(accountAuthorize: AccountAuthorize): Account {
+        val account: Account = accountRepository.getByEmail(accountAuthorize.email)
+            .orElseThrow { IllegalArgumentException("일치하는 이메일을 찾을 수 없습니다.") }
+        if (!passwordService.isValidPassword(accountAuthorize.password, account.password)) {
+            throw IllegalArgumentException("올바르지 않은 비밀번호입니다.")
+        }
+        return account
     }
 
 }

@@ -1,15 +1,19 @@
 package boaz.lol.co.application.account
 
 import boaz.lol.co.application.account.dto.*
+import boaz.lol.co.domains.account.AccountAuthorize
 import boaz.lol.co.domains.account.AccountCreate
 import boaz.lol.co.domains.account.AccountService
+import boaz.lol.co.dto.TokenDto
+import boaz.lol.co.enums.Role
+import boaz.lol.co.service.JwtService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/accounts")
-class AccountController(private val accountService: AccountService) {
+class AccountController(private val accountService: AccountService, private val jwtService: JwtService) {
 
     @PostMapping("/signup")
     fun signUp(@RequestBody req: AccountCreate): ResponseEntity<String> {
@@ -17,10 +21,9 @@ class AccountController(private val accountService: AccountService) {
         return ResponseEntity.ok("성공적으로 생성됨.");
     }
 
-//    @PostMapping("/signin")
-//    fun signIn(@RequestBody reqDto: SignInReq): ResponseEntity<String> {
-//        // 로그인 요청 처리
-//        val token = accountServiceImpl.signIn(reqDto)
-//        return ResponseEntity.ok(token)
-//    }
+    @PostMapping("/signin")
+    fun signIn(@RequestBody req: AccountAuthorize): ResponseEntity<TokenDto> {
+        val token = jwtService.issueJwt(accountService.authorize(req).id, listOf(Role.USER))
+        return ResponseEntity.ok(token)
+    }
 }
