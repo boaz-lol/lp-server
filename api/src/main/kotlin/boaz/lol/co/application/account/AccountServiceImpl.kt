@@ -30,4 +30,9 @@ class AccountServiceImpl(
         return account
     }
 
+    override fun getById(id: Long): Account {
+        return accountRepository.getById(id)
+            .orElseThrow {IllegalArgumentException("올바르지 않은 접근입니다.")}
+    }
+
 }

@@ -4,4 +4,6 @@ interface AccountService {
     fun register(accountCreate: AccountCreate): Account
 
     fun authorize(accountAuthorize: AccountAuthorize): Account
+
+    fun getById(id: Long): Account
 }

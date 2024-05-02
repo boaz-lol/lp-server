@@ -20,4 +20,8 @@ dependencies {
     // Servlet
     compileOnly("javax.servlet:javax.servlet-api:4.0.1")
 
+    implementation(project(":domain"))
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation(project(":common:enum"))
+
 }

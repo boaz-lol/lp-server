@@ -10,4 +10,8 @@ data class Account(
     val isAgreeToPersonalInfo: Boolean,
     val isAgreeToEmail: Boolean,
     val isCertificatedEmail: Boolean
-)
+) {
+    fun to() : AccountData {
+        return AccountData(id, email, riotId)
+    }
+}
