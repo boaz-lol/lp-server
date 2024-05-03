@@ -32,4 +32,5 @@ class AccountController(private val accountService: AccountService, private val 
     fun getAccountInfo(@AuthAccountData accountData: AccountData) : ResponseEntity<AccountRes> {
         return ResponseEntity.ok(AccountRes.from(accountService.getById(accountData.id)))
     }
+
 }
