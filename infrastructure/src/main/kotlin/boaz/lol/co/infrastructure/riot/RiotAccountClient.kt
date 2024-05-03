@@ -9,4 +9,5 @@ import org.springframework.web.bind.annotation.RequestParam
 interface RiotAccountClient {
     @GetMapping("/accounts/by-riot-id/{gameName}/{tagLine}")
     fun getRiotAccount(@PathVariable gameName: String, @PathVariable tagLine: String, @RequestParam("api_key") apiKey: String) : RiotAccountInfo
+
 }
