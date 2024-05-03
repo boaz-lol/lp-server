@@ -1,4 +1,4 @@
-package boaz.lol.co.application.account.dto
+package boaz.lol.co.application.account.controller.dto
 
 import boaz.lol.co.domains.account.Account
 
