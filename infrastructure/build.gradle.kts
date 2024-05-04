@@ -9,6 +9,7 @@ jar.enabled = true
 
 dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.1.1")
+    implementation(project(":common"))
 }
 
 dependencyManagement {

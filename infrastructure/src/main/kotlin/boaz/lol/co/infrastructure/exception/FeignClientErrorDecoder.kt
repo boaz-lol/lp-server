@@ -12,7 +12,7 @@ class FeignClientErrorDecoder (
     override fun decode(methodKey: String, response: Response): Exception {
         val error = parse(response)
         error?.status?.let {
-            return IllegalArgumentException(error.status.message)
+            return RiotAccountException(RiotErrorCode.USER_NOT_FOUND)
         }
         return ErrorDecoder.Default().decode(methodKey, response)
     }

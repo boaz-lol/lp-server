@@ -1,6 +1,4 @@
-package boaz.lol.co.application.exception
-
-import org.springframework.http.HttpStatus
+package boaz.lol.co.common.exception
 
 interface ErrorCode {
     fun getCode(): Int

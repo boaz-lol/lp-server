@@ -12,9 +12,9 @@ dependencies {
         implementation(project(":api:admin"))
         implementation(project(":domain"))
         implementation(project(":common:enum"))
+        implementation(project(":common"))
         implementation(project(":infrastructure"))
 
         implementation("org.springframework.boot:spring-boot-starter-web")
-        // implementation("jakarta.transaction:jakarta.transaction-api:2.0.1")
         compileOnly("org.springframework:spring-tx")
 }
