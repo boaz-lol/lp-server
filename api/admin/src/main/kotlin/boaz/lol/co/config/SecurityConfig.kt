@@ -33,7 +33,9 @@ class SecurityConfig(
                 sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             }
             .authorizeHttpRequests { requests ->
-                requests.anyRequest().permitAll()
+                requests
+                    .requestMatchers("/accounts/riot/*").permitAll()
+                    .anyRequest().permitAll()
             }
             .run {
                 JwtSecurityConfig(jwtProvider).configure(http)

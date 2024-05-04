@@ -50,3 +50,5 @@ api/admin/src/main/resources/application.yaml
 storage/core-mysql/src/main/resources/application-mysql.yaml
 
 api/admin/src/main/resources/application-security.yaml
+
+infrastructure/src/main/resources/application-external.yaml

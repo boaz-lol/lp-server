@@ -1,6 +1,6 @@
-package boaz.lol.co.application.account
+package boaz.lol.co.application.account.controller
 
-import boaz.lol.co.application.account.dto.*
+import boaz.lol.co.application.account.controller.dto.AccountRes
 import boaz.lol.co.domains.account.AccountAuthorize
 import boaz.lol.co.domains.account.AccountCreate
 import boaz.lol.co.domains.account.AccountData
@@ -9,7 +9,6 @@ import boaz.lol.co.dto.TokenDto
 import boaz.lol.co.enums.Role
 import boaz.lol.co.resolver.AuthAccountData
 import boaz.lol.co.service.JwtService
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -30,7 +29,8 @@ class AccountController(private val accountService: AccountService, private val 
     }
 
     @GetMapping("/me")
-    fun getAccountInfo(@AuthAccountData accountData: AccountData) : ResponseEntity<AccountData> {
-        return ResponseEntity.ok(accountData)
+    fun getAccountInfo(@AuthAccountData accountData: AccountData) : ResponseEntity<AccountRes> {
+        return ResponseEntity.ok(AccountRes.from(accountService.getById(accountData.id)))
     }
+
 }
