@@ -10,9 +10,16 @@ class FeignClientErrorDecoder (
     private val objectMapper: ObjectMapper = jacksonObjectMapper().findAndRegisterModules()
 ) : ErrorDecoder {
     override fun decode(methodKey: String, response: Response): Exception {
-        if (response.status() == 404) {
-            throw IllegalArgumentException("No User")
+        val error = parse(response)
+        error?.status?.let {
+            return IllegalArgumentException(error.status.message)
         }
         return ErrorDecoder.Default().decode(methodKey, response)
+    }
+
+    private fun parse(response: Response): RiotCommonError? {
+        return runCatching {
+            objectMapper.readValue(response.body().asInputStream(), RiotCommonError::class.java)
+        }.getOrNull()
     }
 }
