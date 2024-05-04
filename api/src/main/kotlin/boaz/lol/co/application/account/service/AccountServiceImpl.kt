@@ -1,11 +1,12 @@
 package boaz.lol.co.application.account.service
 
 import boaz.lol.co.domains.account.*
-import boaz.lol.co.service.JwtService
 import boaz.lol.co.service.PasswordService
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
+@Transactional
 class AccountServiceImpl(
     private val accountRepository: AccountRepository,
     private val passwordService: PasswordService
@@ -30,6 +31,7 @@ class AccountServiceImpl(
         return account
     }
 
+    @Transactional(readOnly = true)
     override fun getById(id: Long): Account {
         return accountRepository.getById(id)
             .orElseThrow {IllegalArgumentException("올바르지 않은 접근입니다.")}

@@ -11,7 +11,10 @@ dependencies {
         runtimeOnly(project(":storage:core-mysql"))
         implementation(project(":api:admin"))
         implementation(project(":domain"))
-        implementation("org.springframework.boot:spring-boot-starter-web")
         implementation(project(":common:enum"))
+        implementation(project(":common"))
         implementation(project(":infrastructure"))
+
+        implementation("org.springframework.boot:spring-boot-starter-web")
+        compileOnly("org.springframework:spring-tx")
 }
