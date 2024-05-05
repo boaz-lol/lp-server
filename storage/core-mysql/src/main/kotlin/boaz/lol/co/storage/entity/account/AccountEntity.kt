@@ -3,6 +3,7 @@ package boaz.lol.co.storage.entity.account
 import boaz.lol.co.storage.common.BaseEntity
 import boaz.lol.co.domains.account.Account
 import boaz.lol.co.domains.account.AccountCreate
+import boaz.lol.co.domains.account.AccountModify
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
@@ -11,19 +12,19 @@ import jakarta.persistence.Table
 @Table(name="account")
 class AccountEntity(
     @Column
-    val email: String,
+    var email: String,
 
     @Column
-    val password: String,
+    var password: String,
 
     @Column
-    val riotName: String,
+    var riotName: String,
 
     @Column
-    val riotTag: String,
+    var riotTag: String,
 
     @Column
-    val riotId: String,
+    var riotId: String,
 
     @Column
     val isAgreeToPersonalInfo: Boolean = false,
@@ -46,7 +47,7 @@ class AccountEntity(
         riotId = account.riotId,
         isAgreeToPersonalInfo = account.isAgreeToPersonalInfo,
         isAgreeToEmail = account.isAgreeToEmail,
-        isCertificatedEmail = account.isCertificatedEmail
+        isCertificatedEmail = account.isCertificatedEmail,
     )
 
     constructor(account: AccountCreate) : this(
@@ -59,5 +60,12 @@ class AccountEntity(
         isAgreeToEmail = account.isAgreeToEmail,
         isCertificatedEmail = account.isCertificatedEmail
     )
+
+    fun update(accountModify: AccountModify) {
+        this.email = accountModify.email
+        this.riotName = accountModify.riotName
+        this.riotTag = accountModify.riotTag
+        this.riotId = accountModify.riotId
+    }
 
 }

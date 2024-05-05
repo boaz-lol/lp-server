@@ -11,10 +11,11 @@ import java.util.*
 import kotlin.jvm.Transient
 
 @MappedSuperclass
-abstract class BaseEntity : Persistable<Long> {
+abstract class BaseEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private val id: Long? = null
+) : Persistable<Long> {
 
     @Transient
     private var _isNew = true

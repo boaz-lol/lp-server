@@ -35,6 +35,7 @@ class SecurityConfig(
             .authorizeHttpRequests { requests ->
                 requests
                     .requestMatchers("/accounts/riot/*").permitAll()
+                    .requestMatchers("/accounts/*").permitAll()
                     .anyRequest().permitAll()
             }
             .run {

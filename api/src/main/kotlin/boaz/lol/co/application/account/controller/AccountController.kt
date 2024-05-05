@@ -1,10 +1,7 @@
 package boaz.lol.co.application.account.controller
 
 import boaz.lol.co.application.account.controller.dto.AccountRes
-import boaz.lol.co.domains.account.AccountAuthorize
-import boaz.lol.co.domains.account.AccountCreate
-import boaz.lol.co.domains.account.AccountData
-import boaz.lol.co.domains.account.AccountService
+import boaz.lol.co.domains.account.*
 import boaz.lol.co.dto.TokenDto
 import boaz.lol.co.enums.Role
 import boaz.lol.co.resolver.AuthAccountData
@@ -14,8 +11,10 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/accounts")
-class AccountController(private val accountService: AccountService, private val jwtService: JwtService) {
-
+class AccountController (
+    private val accountService: AccountService,
+    private val jwtService: JwtService
+) {
     @PostMapping("/signup")
     fun signUp(@RequestBody req: AccountCreate): ResponseEntity<String> {
         accountService.register(req);
@@ -31,6 +30,15 @@ class AccountController(private val accountService: AccountService, private val 
     @GetMapping("/me")
     fun getAccountInfo(@AuthAccountData accountData: AccountData) : ResponseEntity<AccountRes> {
         return ResponseEntity.ok(AccountRes.from(accountService.getById(accountData.id)))
+    }
+
+    @PutMapping("/me")
+    fun modifyAccountInfo (
+        @AuthAccountData accountData: AccountData,
+        @RequestBody req: AccountModify
+    ): ResponseEntity<String> {
+        accountService.modify(accountData, req)
+        return ResponseEntity.ok("정상적으로 변경됨.")
     }
 
 }
