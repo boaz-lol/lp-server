@@ -31,7 +31,7 @@ class AccountRepositoryImpl(
         val entity: AccountEntity = accountJpaRepository.findById(id)
             .orElseThrow {RuntimeException("DB 에러 발생")}
         entity.update(updated)
-        accountJpaRepository.save(entity)
+        // accountJpaRepository.save(entity)
         return entity.to()
     }
 }
