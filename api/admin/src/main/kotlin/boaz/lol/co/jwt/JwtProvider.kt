@@ -41,6 +41,8 @@ class JwtProvider (
             .compact();
     }
 
+
+
     fun getAuthentication(accessToken: String): Authentication {
         val claims: Claims = parseClaims(accessToken)
         val authorities: Collection<GrantedAuthority> = claims[AUTHORITIES_KEY].toString().split(",")
