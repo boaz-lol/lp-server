@@ -9,4 +9,5 @@ interface SubscribeRepository {
     fun addSubscribe(account: Account, champion: Champion)
 
     fun deleteSubscribe(account: Account, champion: Champion)
+    fun getAccountsByChampions(champions: List<Champion>): List<Account>
 }

@@ -1,4 +1,6 @@
 package boaz.lol.co.domains.subscribe
 
-class SubscribeData {
-}
+data class SubscribeData(
+    val accountId: Long,
+    val championIds: List<Long>
+)
