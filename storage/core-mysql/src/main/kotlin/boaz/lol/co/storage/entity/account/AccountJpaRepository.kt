@@ -8,4 +8,5 @@ import java.util.Optional
 interface AccountJpaRepository : JpaRepository<AccountEntity, Long> {
     fun findByEmail(email: String): Optional<AccountEntity>
     fun existsByEmail(email: String): Boolean
+    fun findAllByRiotNameContainsAndRiotTagContains(riotName: String, riotTag: String): List<AccountEntity>
 }

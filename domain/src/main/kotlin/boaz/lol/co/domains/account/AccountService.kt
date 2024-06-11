@@ -6,4 +6,8 @@ interface AccountService {
     fun authorize(accountAuthorize: AccountAuthorize): Account
 
     fun getById(id: Long): Account
+
+    fun modify(accountData: AccountData, accountModify: AccountModify): Account
+
+    fun searchByGameInfo(gameName: String, tagLine: String): List<Account>
 }

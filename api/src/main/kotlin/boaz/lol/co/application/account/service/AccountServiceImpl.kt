@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional
 class AccountServiceImpl(
     private val accountRepository: AccountRepository,
     private val passwordService: PasswordService
-) : AccountService {
+): AccountService{
 
-    override fun register(accountCreate: AccountCreate): Account {
+     override fun register(accountCreate: AccountCreate): Account {
         if (accountRepository.existByEmail(accountCreate.email)) {
             throw IllegalArgumentException("이미 존재하는 이메일입니다.")
         }
@@ -31,10 +31,29 @@ class AccountServiceImpl(
         return account
     }
 
+    override fun modify(accountData: AccountData, accountModify: AccountModify): Account {
+        var account: Account = getById(accountData.id)
+        if (passwordService.isValidPassword(accountModify.password, account.password)) {
+            if (!accountModify.equal(account)) {
+                account = accountRepository.modify(account.id, accountModify)
+            } else {
+                throw IllegalArgumentException("변경사항이 없습니다.")
+            }
+        } else {
+            throw IllegalArgumentException("올바르지 않은 비밀번호입니다.")
+        }
+        return account
+    }
+
     @Transactional(readOnly = true)
     override fun getById(id: Long): Account {
         return accountRepository.getById(id)
             .orElseThrow {IllegalArgumentException("올바르지 않은 접근입니다.")}
+    }
+
+    @Transactional(readOnly = true)
+    override fun searchByGameInfo(gameName: String, tagLine: String): List<Account> {
+        return accountRepository.searchByGameInfo(gameName, tagLine)
     }
 
 }
