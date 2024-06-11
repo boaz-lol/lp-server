@@ -1,13 +1,13 @@
 package boaz.lol.co.application.account.controller
 
 import boaz.lol.co.application.account.controller.dto.AccountRes
+import boaz.lol.co.application.account.service.AccountServiceImpl
 import boaz.lol.co.domains.account.*
 import boaz.lol.co.dto.TokenDto
 import boaz.lol.co.enums.Role
 import boaz.lol.co.resolver.AuthAccountData
 import boaz.lol.co.service.AuthService
 import jakarta.servlet.http.Cookie
-import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
