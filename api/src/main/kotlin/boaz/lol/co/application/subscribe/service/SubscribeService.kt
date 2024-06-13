@@ -4,7 +4,6 @@ import boaz.lol.co.application.subscribe.dto.*
 import boaz.lol.co.domains.account.*
 import boaz.lol.co.domains.champion.*
 import boaz.lol.co.domains.subscribe.*
-import boaz.lol.co.application.subscribe.EmailService
 import org.springframework.stereotype.Service
 
 @Service
@@ -39,7 +38,7 @@ class SubscribeService(
             emailService.sendChampionUpdateNotification(
                 account.email,
                 champions.map { it.name }.joinToString(", "),
-                "업데이트 된 챔피언: ${champions.joinToString { it.name }}"
+                "업데이트 챔피언: ${champions.joinToString { it.name }}"
             )
         }
     }

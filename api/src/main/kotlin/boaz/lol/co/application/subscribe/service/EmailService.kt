@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 class EmailService(private val mailSender: JavaMailSender) {
 
     fun sendChampionUpdateNotification(to: String, championNames: String, updateDetails: String) {
-        val subject = "업데이트 된 챔피언: $championNames"
+        val subject = "업데이트 챔피언: $championNames"
         val text = "패치 사항:\n\n$updateDetails"
         val message = SimpleMailMessage()
         message.setTo(to)
