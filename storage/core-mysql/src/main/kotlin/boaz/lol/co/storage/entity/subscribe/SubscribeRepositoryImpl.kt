@@ -32,7 +32,7 @@ class SubscribeRepositoryImpl(
         val accountEntity = accountJpaRepository.findById(account.id).orElseThrow()
         val championEntity = championJpaRepository.findById(champion.id).orElseThrow()
         val subscription = subscribeJpaRepository.findByAccountAndChampion(accountEntity, championEntity)
-            ?: throw NoSuchElementException("Subscription not found")
+            ?: throw NoSuchElementException("구독 정보를 찾을 수 없음.")
         subscribeJpaRepository.delete(subscription)
     }
 
