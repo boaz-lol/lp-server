@@ -1,4 +1,6 @@
 package boaz.lol.co.application.subscribe.dto
 
-class SubscribeReq {
-}
+data class SubscribeReq(
+    val accountId: Long,
+    val championId: Long
+)

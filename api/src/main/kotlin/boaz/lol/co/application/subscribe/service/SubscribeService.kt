@@ -22,8 +22,8 @@ class SubscribeService(
     }
 
     fun removeSubscription(req: SubscribeReq) {
-        val account = accountRepository.findById(req.accountId).orElseThrow()
-        val champion = championRepository.findById(req.championId).orElseThrow()
+        val account = accountRepository.getById(req.accountId).orElseThrow()
+        val champion = championRepository.getById(req.championId).orElseThrow()
         subscribeRepository.deleteSubscribe(account, champion)
     }
 
@@ -39,7 +39,7 @@ class SubscribeService(
             emailService.sendChampionUpdateNotification(
                 account.email,
                 champions.map { it.name }.joinToString(", "),
-                "Updates for champions: ${champions.joinToString { it.name }}"
+                "업데이트 된 챔피언: ${champions.joinToString { it.name }}"
             )
         }
     }
