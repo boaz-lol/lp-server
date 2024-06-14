@@ -14,23 +14,26 @@ class SubscribeService(
     private val emailService: EmailService
 ) {
 
-    fun addSubscription(req: SubscribeReq) {
-        val account = accountRepository.getById(req.accountId).orElseThrow()
+    fun Subscription(req: SubscribeReq, accountData: AccountData) {
+        val account = accountRepository.getById(accountData.id).orElseThrow()
         val champion = championRepository.getById(req.championId).orElseThrow()
-        subscribeRepository.addSubscribe(account, champion)
+
+        when (req.action.lowercase()) {
+            "add" -> {
+                subscribeRepository.addSubscribe(account, champion)
+            }
+            "remove" -> {
+                subscribeRepository.deleteSubscribe(account, champion)
+            }
+            else -> throw IllegalArgumentException()
+        }
     }
 
-    fun removeSubscription(req: SubscribeReq) {
-        val account = accountRepository.getById(req.accountId).orElseThrow()
-        val champion = championRepository.getById(req.championId).orElseThrow()
-        subscribeRepository.deleteSubscribe(account, champion)
-    }
-
-    fun getSubscribeData(accountId: Long): SubscribeData {
-        val account = accountRepository.getById(accountId).orElseThrow()
-        val subscribe = subscribeRepository.getByAccount(account)
-        return subscribe.toSubscribeData()
-    }
+//    fun getSubscribeData(accountId: Long): SubscribeData {
+//        val account = accountRepository.getById(accountId).orElseThrow()
+//        val subscribe = subscribeRepository.getByAccount(account)
+//        return subscribe.toSubscribeData()
+//    }
 
     fun notify(champions: List<Champion>) {
         val accounts = subscribeRepository.getAccountsByChampions(champions)

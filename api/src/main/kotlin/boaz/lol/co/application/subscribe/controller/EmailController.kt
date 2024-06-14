@@ -7,15 +7,14 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/notify")
+@RequestMapping("/notifies")
 class EmailController(
     private val subscribeService: SubscribeService
 ) {
 
     @PostMapping
     fun sendNotifications(@RequestBody req: EmailReq): ResponseEntity<String> {
-        val champions = req.champions
-        subscribeService.notify(champions)
+        subscribeService.notify(req.champions)
         return ResponseEntity.status(HttpStatus.OK).body("이메일 알림이 성공적으로 발송되었습니다.")
     }
 }
