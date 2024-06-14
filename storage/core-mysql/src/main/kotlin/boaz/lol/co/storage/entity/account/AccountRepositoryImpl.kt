@@ -34,4 +34,9 @@ class AccountRepositoryImpl(
         // accountJpaRepository.save(entity)
         return entity.to()
     }
+
+    override fun searchByGameInfo(riotName: String, riotTag: String): List<Account> {
+       val entities: List<AccountEntity> = accountJpaRepository.findAllByRiotNameContainsAndRiotTagContains(riotName, riotTag)
+        return entities.map { it.to() }.toList()
+    }
 }

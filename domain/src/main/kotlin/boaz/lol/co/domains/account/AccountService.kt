@@ -8,4 +8,6 @@ interface AccountService {
     fun getById(id: Long): Account
 
     fun modify(accountData: AccountData, accountModify: AccountModify): Account
+
+    fun searchByGameInfo(gameName: String, tagLine: String): List<Account>
 }

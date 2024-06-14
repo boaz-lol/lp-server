@@ -20,6 +20,9 @@ class ChampionEntity(
     val type: String,
 
     @Column
+    val image: String,
+
+    @Column
     val consumeType: String,
 
     @Column
@@ -38,6 +41,6 @@ class ChampionEntity(
     )
 
     fun to(): Champion {
-        return Champion(id, name, detail, type, consumeType, mainLine, isActive)
+        return Champion(id, name, detail, type, consumeType, mainLine, image, isActive)
     }
 }

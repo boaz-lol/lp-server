@@ -8,4 +8,5 @@ interface AccountRepository {
     fun existByEmail(email: String): Boolean
     fun add(account: AccountCreate): Account
     fun modify(id: Long, updated: AccountModify): Account
+    fun searchByGameInfo(riotName: String, riotTag: String): List<Account>
 }
