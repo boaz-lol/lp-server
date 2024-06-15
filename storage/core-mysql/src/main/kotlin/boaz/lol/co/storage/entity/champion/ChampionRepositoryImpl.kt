@@ -20,4 +20,8 @@ class ChampionRepositoryImpl(
     override fun getById(id: Long): Optional<Champion> {
         return championJpaRepository.findById(id).map(ChampionEntity::to)
     }
+    @Transactional(readOnly = true)
+    override fun getByIds(ids: List<Long>): List<Champion> {
+        return championJpaRepository.findAllByIdIn(ids).map { it.to() }
+    }
 }
