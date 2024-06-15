@@ -16,5 +16,6 @@ dependencies {
         implementation(project(":infrastructure"))
 
         implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("org.springframework.boot:spring-boot-starter-mail")
         compileOnly("org.springframework:spring-tx")
 }

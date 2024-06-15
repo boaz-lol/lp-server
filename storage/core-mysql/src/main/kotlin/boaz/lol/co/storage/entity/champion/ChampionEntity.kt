@@ -31,6 +31,15 @@ class ChampionEntity(
     @Column
     val isActive: Boolean
 ): BaseEntity() {
+    constructor(champion: Champion) : this(
+        name = champion.name,
+        detail = champion.detail,
+        type = champion.type,
+        consumeType = champion.consumeType,
+        mainLine = champion.mainLine,
+        isActive = champion.isActive
+    )
+
     fun to(): Champion {
         return Champion(id, name, detail, type, consumeType, mainLine, image, isActive)
     }
