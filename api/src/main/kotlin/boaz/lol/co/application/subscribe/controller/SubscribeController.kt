@@ -9,21 +9,15 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/subscribtions")
+@RequestMapping("/subscriptions")
 class SubscribeController(private val subscribeService: SubscribeService) {
 
     @PostMapping
-    fun handleSubscription(
+    fun subscription(
         @RequestBody req: SubscribeReq,
         @AuthAccountData accountData: AccountData
     ): ResponseEntity<String> {
-        subscribeService.Subscription(req, accountData)
-        return ResponseEntity.status(HttpStatus.OK).body(
-            when (req.action.lowercase()) {
-                "add" -> "구독 완료"
-                "remove" -> "구독 취소 완료"
-                else -> "잘못된 요청"
-            }
-        )
+        subscribeService.like(req, accountData)
+        return ResponseEntity.status(HttpStatus.OK).body("구독이 성공적으로 업데이트 되었습니다.")
     }
 }

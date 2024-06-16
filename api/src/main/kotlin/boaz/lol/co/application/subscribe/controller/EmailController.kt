@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/notifies")
+@RequestMapping("/notifications")
 class EmailController(
     private val subscribeService: SubscribeService
 ) {
