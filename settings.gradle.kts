@@ -4,6 +4,7 @@ include (
     "domain",
     "storage:core-mysql",
     "storage:core-mongo",
+    "storage:redis",
     "api",
     "api:admin",
     "common",
