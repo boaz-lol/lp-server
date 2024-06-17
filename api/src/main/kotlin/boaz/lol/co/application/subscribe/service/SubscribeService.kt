@@ -11,7 +11,6 @@ class SubscribeService(
     private val subscribeRepository: SubscribeRepository,
     private val accountRepository: AccountRepository,
     private val championRepository: ChampionRepository,
-    private val emailService: EmailService
 ) {
 
 
@@ -27,20 +26,14 @@ class SubscribeService(
     }
 
 
-    fun notify(champions: List<Champion>) {
-        val accounts = subscribeRepository.getAccountsByChampions(champions)
-        accounts.forEach { account ->
-            emailService.sendChampionUpdateNotification(
-                account.email,
-                champions.map { it.name }.joinToString(", "),
-                "업데이트 챔피언: ${champions.joinToString { it.name }}"
-            )
-        }
-    }
-
-//        fun getSubscribeData(accountId: Long): SubscribeData {
-//        val account = accountRepository.getById(accountId).orElseThrow()
-//        val subscribe = subscribeRepository.getByAccount(account)
-//        return subscribe.toSubscribeData()
+//    fun notify(champions: List<Champion>) {
+//        val accounts = subscribeRepository.getAccountsByChampions(champions)
+//        accounts.forEach { account ->
+//            emailService.sendChampionUpdateNotification(
+//                account.email,
+//                champions.map { it.name }.joinToString(", "),
+//                "업데이트 챔피언: ${champions.joinToString { it.name }}"
+//            )
+//        }
 //    }
 }
