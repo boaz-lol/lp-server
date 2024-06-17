@@ -35,10 +35,4 @@ class SubscribeRepositoryImpl(
             ?: throw NoSuchElementException("구독 정보를 찾을 수 없음.")
         subscribeJpaRepository.delete(subscription)
     }
-
-    override fun getAccountsByChampions(champions: List<Champion>): List<Account> {
-        val championEntities = champions.map { ChampionEntity(it) }
-        val subscriptions = subscribeJpaRepository.findAllByChampionIn(championEntities)
-        return subscriptions.map { it.account.to() }.distinct()
-    }
 }
