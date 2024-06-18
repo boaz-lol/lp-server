@@ -35,7 +35,6 @@ class AccountController (
     fun reissue(@CookieValue(value = "refreshToken") cookie: Cookie) : ResponseEntity<TokenDto> {
         val token = authService.reissue(cookie.value)
         return ResponseEntity.ok()
-            .header("Set-Cookie", authService.generateCookie(token.refreshToken).toString())
             .body(token)
     }
 

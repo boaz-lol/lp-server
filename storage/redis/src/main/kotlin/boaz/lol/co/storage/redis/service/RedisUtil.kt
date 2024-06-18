@@ -2,21 +2,23 @@ package boaz.lol.co.storage.redis.service
 
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.core.ValueOperations
-import org.springframework.stereotype.Service
-import java.time.Duration
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer
+import org.springframework.stereotype.Component
+import java.util.concurrent.TimeUnit
 
 
-@Service
-class RedisService(private val redisTemplate: RedisTemplate<String, String>) {
+@Component
+class RedisUtil(private val redisTemplate: RedisTemplate<String, String>) {
 
     fun setValues(key: String, data: String) {
         val values: ValueOperations<String, String> = redisTemplate.opsForValue()
         values.set(key, data)
     }
 
-    fun setValues(key: String, data: String, duration: Duration) {
+    fun setValues(key: String, data: String, duration: Long) {
         val values: ValueOperations<String, String> = redisTemplate.opsForValue()
-        values.set(key, data, duration)
+        values[key] = data
+        redisTemplate.expire(key, duration, TimeUnit.MILLISECONDS)
     }
 
     fun getValues(key: String): String? {
