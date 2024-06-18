@@ -6,22 +6,26 @@ spring:
           insync:
             replicas: 3
 kafka:
-  bootstrapAddress: localhost:9092, localhost:9093
-  admin:
-    properties:
+  bootstrapAddress: "http://13.125.243.221:8989/"
   topic:
-    alarm:
-      name: alarm
+    batch:
+      name: "batch_topic"
+      numPartitions: 4
       replicationFactor: 2
-      numPartitions: 2
-  consumer:
-    alarm:
-      rdb-group-id: createAlarmInRDB
-      redis-group-id: publishInRedis
-
-    autoOffsetResetConfig: latest
+    champion:
+      name: "champion_topic"
+      numPartitions: 4
+      replicationFactor: 2
   producer:
-    acksConfig: all
+    acksConfig: "all"
     retry: 3
-    enable-idempotence: true
-    max-in-flight-requests-per-connection: 3
+    enableIdempotence: true
+    maxInFlightRequestsPerConnection: 5
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  consumer:
+    autoOffsetResetConfig: "earliest"
+    batchGroupId: "batch_group"
+    championGroupId: "champion_group"
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

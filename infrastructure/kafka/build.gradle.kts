@@ -8,4 +8,6 @@ jar.enabled = true
 
 dependencies {
     implementation("org.springframework.kafka:spring-kafka")
+    implementation("org.springframework.boot:spring-boot-configuration-processor")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
