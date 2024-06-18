@@ -13,6 +13,6 @@ allOpen {
 }
 
 dependencies {
-    implementation(project(":domain"))
-    runtimeOnly("com.mysql:mysql-connector-j")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 }

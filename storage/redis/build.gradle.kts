@@ -7,8 +7,6 @@ bootJar.enabled = false
 jar.enabled = true
 
 
-allprojects {
-    dependencies {
-        api("org.springframework.boot:spring-boot-starter-data-jpa")
-    }
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
 }
