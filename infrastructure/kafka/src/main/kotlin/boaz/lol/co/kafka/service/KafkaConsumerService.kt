@@ -1,8 +1,6 @@
 package boaz.lol.co.kafka.service
 
-import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.springframework.kafka.annotation.KafkaListener
-import org.springframework.kafka.annotation.TopicPartition
 import org.springframework.kafka.support.Acknowledgment
 import org.springframework.stereotype.Service
 
@@ -15,8 +13,7 @@ class KafkaConsumerService {
         containerFactory = "kafkaListenerContainerFactoryBatch"
     )
     fun consumeBatchEvent(message: String, ack: Acknowledgment) {
-        println("Received batch message: $message")
-        // batch 관련 로직
+        // println("배치 관련: $message")
         ack.acknowledge()
     }
 
@@ -26,8 +23,7 @@ class KafkaConsumerService {
         containerFactory = "kafkaListenerContainerFactoryChampion"
     )
     fun consumeChampionEvent(message: String, ack: Acknowledgment) {
-        println("Received champion message: $message")
-        // Add your champion processing logic here
+        // println("챔피언 관련: $message")
         ack.acknowledge()
     }
 }
