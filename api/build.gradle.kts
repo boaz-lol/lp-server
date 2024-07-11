@@ -9,6 +9,7 @@ jar.enabled = false
 
 dependencies {
         runtimeOnly(project(":storage:core-mysql"))
+        implementation(project(":storage:core-mongo"))
         implementation(project(":api:admin"))
         implementation(project(":domain"))
         implementation(project(":common:enum"))
