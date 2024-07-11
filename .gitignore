@@ -56,3 +56,5 @@ infrastructure/src/main/resources/application-external.yaml
 storage/core-mongo/src/main/resources/application-mongo.yaml
 
 storage/redis/src/main/resources/application-redis.yaml
+
+batch/src/main/resources/application.yaml

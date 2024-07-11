@@ -10,5 +10,6 @@ include (
     "common",
     "common:enum",
     "infrastructure",
-    "infrastructure:kafka"
+    "infrastructure:kafka",
+    "batch"
 )

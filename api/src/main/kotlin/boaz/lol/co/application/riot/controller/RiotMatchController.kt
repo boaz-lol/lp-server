@@ -19,7 +19,7 @@ class RiotMatchController(
     }
 
     @GetMapping("/detail")
-    fun getMatchDefailInfo(@RequestParam matchId: String) : ResponseEntity<Any> {
+    fun getMatchDetailInfo(@RequestParam matchId: String) : ResponseEntity<Any> {
         return ResponseEntity.ok(riotMatchService.getMatchInfo(matchId))
     }
 }
