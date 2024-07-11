@@ -15,6 +15,7 @@ dependencies {
         implementation(project(":common:enum"))
         implementation(project(":common"))
         implementation(project(":infrastructure"))
+        implementation(project(":infrastructure:kafka"))
 
         implementation("org.springframework.boot:spring-boot-starter-web")
         compileOnly("org.springframework:spring-tx")

@@ -1,31 +1,18 @@
 spring:
   kafka:
+    consumer:
+      bootstrap-servers:
+        - 3.38.212.52:9092
+        - 3.38.212.52:9093
+        - 3.38.212.52:9094
+      group-id: springboot
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
-      properties:
-        min:
-          insync:
-            replicas: 3
-kafka:
-  bootstrapAddress: "http://13.125.243.221:9092/"
-  topic:
-    batch:
-      name: "batch_topic"
-      numPartitions: 4
-      replicationFactor: 2
-    champion:
-      name: "champion_topic"
-      numPartitions: 4
-      replicationFactor: 2
-  producer:
-    acksConfig: "all"
-    retry: 3
-    enableIdempotence: true
-    maxInFlightRequestsPerConnection: 5
-    key-serializer: org.apache.kafka.common.serialization.StringSerializer
-    value-serializer: org.apache.kafka.common.serialization.StringSerializer
-  consumer:
-    autoOffsetResetConfig: "earliest"
-    batchGroupId: "batch_group"
-    championGroupId: "champion_group"
-    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      bootstrap-servers:
+        - 3.38.212.52:9092
+        - 3.38.212.52:9093
+        - 3.38.212.52:9094
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer

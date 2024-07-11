@@ -1,33 +1,17 @@
 package boaz.lol.co.kafka.service
 
 import org.springframework.kafka.annotation.KafkaListener
-import org.springframework.kafka.support.Acknowledgment
 import org.springframework.stereotype.Service
+import java.io.IOException
 
-/*
 @Service
 class KafkaConsumerService {
-
     @KafkaListener(
-        topics = ["\${kafka.topic.batch.name}"],
-        groupId = "\${kafka.consumer.batchGroupId}",
-        containerFactory = "kafkaListenerContainerFactoryBatch"
+        topics = ["riot_account_search"],
+        groupId = "springboot"
     )
-    fun consumeBatchEvent(message: String, ack: Acknowledgment) {
-        // println("배치 관련: $message")
-        ack.acknowledge()
-    }
-
-    @KafkaListener(
-        topics = ["\${kafka.topic.champion.name}"],
-        groupId = "\${kafka.consumer.championGroupId}",
-        containerFactory = "kafkaListenerContainerFactoryChampion"
-    )
-    fun consumeChampionEvent(message: String, ack: Acknowledgment) {
-        // println("챔피언 관련: $message")
-        ack.acknowledge()
+    @Throws(IOException::class)
+    fun listen(msg: String?) {
+        println(String.format("Consumed message : %s", msg))
     }
 }
-
-
- */
