@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.RestController
 class RiotMatchController(
     private val riotMatchService: RiotMatchService
 ) {
-    @GetMapping()
+    @GetMapping
     fun getRiotMatchIdsByRiotPuuid(@RequestParam puuid: String) : ResponseEntity<List<String>> {
         return ResponseEntity.ok(riotMatchService.getAllRiotMatchId(puuid))
+    }
+
+    @GetMapping("/detail")
+    fun getMatchDefailInfo(@RequestParam matchId: String) : ResponseEntity<Any> {
+        return ResponseEntity.ok(riotMatchService.getMatchInfo(matchId))
     }
 }

@@ -9,4 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam
 interface RiotMatchClient {
     @GetMapping("/by-puuid/{puuid}/ids?start=0&count=40")
     fun getRiotMatchIdsByPuuid(@PathVariable puuid: String, @RequestParam("api_key") apiKey: String): List<String>
+
+    @GetMapping("/{matchId}")
+    fun getMatchDetail(@PathVariable matchId: String, @RequestParam("api_key") apiKey: String): Any
 }

@@ -14,4 +14,10 @@ class RiotMatchService(
     ) : List<String> {
         return riotMatchClient.getRiotMatchIdsByPuuid(puuid, apiKey);
     }
+
+    fun getMatchInfo (
+        matchId: String
+    ): Any {
+        return riotMatchClient.getMatchDetail(matchId, apiKey)
+    }
 }
