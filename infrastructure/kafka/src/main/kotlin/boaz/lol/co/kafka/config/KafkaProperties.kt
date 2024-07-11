@@ -3,6 +3,7 @@ package boaz.lol.co.kafka.config
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration
 
+/*
 @Configuration
 @ConfigurationProperties(prefix = "kafka")
 class KafkaProperties {
@@ -35,3 +36,5 @@ class KafkaProperties {
         lateinit var championGroupId: String
     }
 }
+
+ */

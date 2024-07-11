@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.core.KafkaAdmin
 
+/*
 @Configuration
 class KafkaTopicConfig(
     private val kafkaProperties: KafkaProperties
@@ -30,3 +31,6 @@ class KafkaTopicConfig(
         return NewTopic(topicConfig.name, topicConfig.numPartitions, topicConfig.replicationFactor)
     }
 }
+
+
+ */

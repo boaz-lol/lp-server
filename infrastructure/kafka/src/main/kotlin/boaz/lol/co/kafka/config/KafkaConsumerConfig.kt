@@ -12,6 +12,7 @@ import org.springframework.kafka.listener.ContainerProperties
 import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
 import org.springframework.kafka.support.serializer.JsonDeserializer
 
+/*
 @EnableKafka
 @Configuration
 class KafkaConsumerConfig(
@@ -60,3 +61,6 @@ class KafkaConsumerConfig(
         return factory
     }
 }
+
+
+ */

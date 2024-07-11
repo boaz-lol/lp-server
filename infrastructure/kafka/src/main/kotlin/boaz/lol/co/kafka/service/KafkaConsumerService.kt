@@ -4,6 +4,7 @@ import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.kafka.support.Acknowledgment
 import org.springframework.stereotype.Service
 
+/*
 @Service
 class KafkaConsumerService {
 
@@ -27,3 +28,6 @@ class KafkaConsumerService {
         ack.acknowledge()
     }
 }
+
+
+ */

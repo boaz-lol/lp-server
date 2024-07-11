@@ -9,6 +9,7 @@ import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.core.ProducerFactory
 import org.springframework.kafka.support.serializer.JsonSerializer
 
+/*
 @Configuration
 class KafkaProducerConfig(
     private val kafkaProperties: KafkaProperties
@@ -32,3 +33,5 @@ class KafkaProducerConfig(
         return KafkaTemplate(producerFactory())
     }
 }
+
+ */

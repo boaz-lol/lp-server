@@ -6,7 +6,7 @@ spring:
           insync:
             replicas: 3
 kafka:
-  bootstrapAddress: "http://13.125.243.221:8989/"
+  bootstrapAddress: "http://13.125.243.221:9092/"
   topic:
     batch:
       name: "batch_topic"
