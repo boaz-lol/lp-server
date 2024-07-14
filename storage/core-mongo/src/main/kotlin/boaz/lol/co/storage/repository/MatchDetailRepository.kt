@@ -1,14 +1,14 @@
 package boaz.lol.co.storage.repository
 
-import jakarta.transaction.Transactional
+import boaz.lol.co.storage.entity.MatchDetail
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.stereotype.Repository
 
 @Repository
-class MatchRepositoryImpl(
+class MatchDetailRepository(
     private val mongoTemplate: MongoTemplate
 ) {
-    fun save(match: Any) {
-        mongoTemplate.insert(match, "matches")
+    fun save(match: MatchDetail) {
+        mongoTemplate.insert(match, "data_source")
     }
 }

@@ -19,7 +19,7 @@ class RiotAccountController(
 ) {
     @GetMapping
     fun getRiotAccountInfo(@RequestParam gameName: String, @RequestParam tagLine: String): ResponseEntity<RiotAccountRes> {
-        kafkaProducerService.sendMessage("riot_account_search", RiotAccountRes.from(riotAccountService.getRiotAccount(gameName, tagLine)).toString())
+        kafkaProducerService.sendMessage("riot_account_search", RiotAccountRes.from(riotAccountService.getRiotAccount(gameName, tagLine)).puuid.toString())
         return ResponseEntity.ok(RiotAccountRes.from(riotAccountService.getRiotAccount(gameName, tagLine)))
     }
 
