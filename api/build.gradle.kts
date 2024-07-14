@@ -17,10 +17,11 @@ allprojects {
 
 dependencies {
         runtimeOnly(project(":storage:core-mysql"))
-        runtimeOnly(project(":storage:core-mongo"))
+        implementation(project(":storage:core-mongo"))
         implementation(project(":api:admin"))
         implementation(project(":infrastructure"))
+        implementation(project(":infrastructure:kafka"))
 
-        implementation("org.springframework.boot:spring-boot-starter-mail")
+        implementation("org.springframework.boot:spring-boot-starter-web")
         compileOnly("org.springframework:spring-tx")
 }

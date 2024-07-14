@@ -9,5 +9,7 @@ include (
     "api:admin",
     "common",
     "common:enum",
-    "infrastructure"
+    "infrastructure",
+    "infrastructure:kafka",
+    "batch"
 )
