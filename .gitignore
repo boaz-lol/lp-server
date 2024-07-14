@@ -58,3 +58,5 @@ storage/core-mongo/src/main/resources/application-mongo.yaml
 storage/redis/src/main/resources/application-redis.yaml
 
 batch/src/main/resources/application.yaml
+
+infrastructure/kafka/src/main/resources/application-kafka.yaml
