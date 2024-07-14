@@ -1,11 +1,11 @@
-package boaz.lol.co.kafka.service
+package boaz.lol.co
 
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Service
 import java.io.IOException
 
 @Service
-class KafkaConsumerService {
+class SearchConsumerService {
     @KafkaListener(
         topics = ["riot_account_search"],
         groupId = "springboot"

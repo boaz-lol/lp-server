@@ -7,8 +7,6 @@ bootJar.enabled = true
 jar.enabled = false
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
-
     implementation(project(":domain"))
     implementation(project(":common:enum"))
     implementation(project(":common"))
@@ -17,6 +15,6 @@ dependencies {
     implementation(project(":infrastructure"))
     implementation(project(":infrastructure:kafka"))
 
-    runtimeOnly(project(":storage:core-mysql"))
     implementation("org.springframework.boot:spring-boot-starter-batch")
+    runtimeOnly("com.mysql:mysql-connector-j")
 }
