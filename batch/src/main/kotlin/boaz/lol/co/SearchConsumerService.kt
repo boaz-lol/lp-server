@@ -23,7 +23,9 @@ class SearchConsumerService(
         println(msg)
         val matchIds: List<String> = riotMatchClient.getRiotMatchIdsByPuuid(msg, apiKey)
         for (id: String in matchIds) {
-            println(id)
+            if (matchRepository.existsByMatchId(id)) {
+                continue
+            }
             val match = riotMatchClient.getMatchDetail(id, apiKey)
             println(matchRepository.save(match))
         }
