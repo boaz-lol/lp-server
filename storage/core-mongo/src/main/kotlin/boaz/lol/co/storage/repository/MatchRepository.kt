@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository
 class MatchRepositoryImpl(
     private val mongoTemplate: MongoTemplate
 ) {
-    fun save(match: Any) {
-        mongoTemplate.insert(match, "matches")
+    fun save(match: Match) : Match {
+        return mongoTemplate.insert(match, "matches")
     }
 
     fun findAll(): List<Match> {
