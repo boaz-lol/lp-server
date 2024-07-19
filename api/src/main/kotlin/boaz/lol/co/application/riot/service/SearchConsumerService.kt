@@ -1,4 +1,4 @@
-package boaz.lol.co
+package boaz.lol.co.application.riot.service
 
 import boaz.lol.co.infrastructure.riot.RiotMatchClient
 import boaz.lol.co.storage.repository.MatchRepositoryImpl
@@ -20,7 +20,6 @@ class SearchConsumerService(
     )
     @Throws(Exception::class)
     fun listen(msg: String) {
-        println(msg)
         val matchIds: List<String> = riotMatchClient.getRiotMatchIdsByPuuid(msg, apiKey)
         for (id: String in matchIds) {
             if (matchRepository.existsByMatchId(id)) {
