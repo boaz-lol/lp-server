@@ -17,8 +17,8 @@ import org.springframework.kafka.support.serializer.JsonSerializer
 @Configuration
 class KafkaProducerConfig {
 
-    // @Value("\${spring.kafka.bootstrap-servers}")
-    // private lateinit var bootstrapServers: String
+    @Value("\${spring.kafka.bootstrap-servers}")
+    private lateinit var bootstrapServers: String
 
     @Bean
     fun objectMapper(): ObjectMapper {
@@ -30,7 +30,7 @@ class KafkaProducerConfig {
     @Bean
     fun producerFactory(objectMapper: ObjectMapper): ProducerFactory<String, Any> {
         val configProps = mapOf<String, Any>(
-            // ProducerConfig.BOOTSTRAP_SERVERS_CONFIG to bootstrapServers,
+            ProducerConfig.BOOTSTRAP_SERVERS_CONFIG to bootstrapServers,
             ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG to StringSerializer::class.java,
             ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG to JsonSerializer::class.java
         )
