@@ -1,6 +1,7 @@
 package boaz.lol.co.application.riot.service
 
 import boaz.lol.co.infrastructure.riot.RiotMatchClient
+import boaz.lol.co.storage.entity.Match
 import boaz.lol.co.storage.repository.MatchRepositoryImpl
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
@@ -21,7 +22,7 @@ class RiotMatchService(
         matchId: String
     ): Any {
         val match = riotMatchClient.getMatchDetail(matchId, apiKey)
-        matchRepositoryImpl.save(match)
+        matchRepositoryImpl.save(Match(match.metadata, match.info))
         return match;
     }
 }

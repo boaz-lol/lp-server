@@ -28,6 +28,7 @@ data class Participant(
     val challenges: Challenges,
     val championId: Int,
     val championName: String,
+    val champLevel: Int,
     val championTransform: Int,
     val commandPings: Int,
     val consumablesPurchased: Int,

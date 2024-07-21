@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 class MatchDetailRepository(
     private val mongoTemplate: MongoTemplate
 ) {
-    fun save(match: MatchDetail) {
-        mongoTemplate.insert(match, "data_source")
+    fun save(match: MatchDetail): MatchDetail {
+        return mongoTemplate.insert(match, "data_source")
     }
 }
