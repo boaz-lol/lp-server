@@ -15,6 +15,7 @@ dependencies {
     implementation(project(":infrastructure"))
     implementation(project(":infrastructure:kafka"))
 
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-batch")
     runtimeOnly("com.mysql:mysql-connector-j")
 }

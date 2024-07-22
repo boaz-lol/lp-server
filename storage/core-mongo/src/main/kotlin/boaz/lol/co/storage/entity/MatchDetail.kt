@@ -7,53 +7,49 @@ import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
 
-@Document(collation = "data_sources")
-class MatchDetail(
+@Document(collection = "data_sources")
+data class MatchDetail(
     @Field("match_id")
-    private val matchId: String,
+    val matchId: String,
 
     @Field("puuid")
-    private val puuid: String,
+    val puuid: String,
 
     @Field("role")
-    private val role: String,
+    val role: String,
 
     @Field("champion_id")
-    private val championId: Int,
+    val championId: Int,
 
     @Field("champ_level")
-    private val champLevel: Int,
+    val champLevel: Int,
 
     @Field("win")
-    private val win: Boolean,
+    val win: Boolean,
 
     @Field("damages_per_minute")
-    private val damagesPerMinute: Double,
+    val damagesPerMinute: Double,
 
     @Field("damage_taken_on_team_percentage")
-    private val damageTakenOnTeamPercentage: Double,
+    val damageTakenOnTeamPercentage: Double,
 
     @Field("gold_per_minute")
-    private val goldPerMinute: Double,
+    val goldPerMinute: Double,
 
     @Field("team_damage_percentage")
-    private val teamDamagePercentage: Double,
+    val teamDamagePercentage: Double,
 
     @Field("kda")
-    private val kda: Double,
+    val kda: Double,
 
     @Field("game_creation")
-    private val gameCreation: LocalDateTime
-) {
-    @Id
-    private val id: String? = null
+    val gameCreation: LocalDateTime,
 
     @Field("created_at")
-    private val createdAt: LocalDateTime = LocalDateTime.now()
+    val createdAt: LocalDateTime = LocalDateTime.now(),
 
-    companion object {
-        private fun convertTimestamp(timestamp: Long): LocalDateTime {
-            return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault())
-        }
-    }
+    @Id
+    val id: String? = null,
+
+    ) {
 }

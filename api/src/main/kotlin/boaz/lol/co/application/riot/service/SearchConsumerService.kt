@@ -1,6 +1,7 @@
-package boaz.lol.co
+package boaz.lol.co.application.riot.service
 
 import boaz.lol.co.infrastructure.riot.RiotMatchClient
+import boaz.lol.co.storage.entity.Match
 import boaz.lol.co.storage.repository.MatchRepositoryImpl
 import jakarta.transaction.Transactional
 import org.springframework.beans.factory.annotation.Value
@@ -20,12 +21,13 @@ class SearchConsumerService(
     )
     @Throws(Exception::class)
     fun listen(msg: String) {
-        println(msg)
         val matchIds: List<String> = riotMatchClient.getRiotMatchIdsByPuuid(msg, apiKey)
         for (id: String in matchIds) {
-            println(id)
+            if (matchRepository.existsByMatchId(id)) {
+                continue
+            }
             val match = riotMatchClient.getMatchDetail(id, apiKey)
-            println(matchRepository.save(match))
+            println(matchRepository.save(Match(match.metadata, match.info)))
         }
     }
 }

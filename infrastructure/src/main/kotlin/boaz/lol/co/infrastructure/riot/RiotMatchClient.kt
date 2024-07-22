@@ -11,5 +11,5 @@ interface RiotMatchClient {
     fun getRiotMatchIdsByPuuid(@PathVariable puuid: String, @RequestParam("api_key") apiKey: String): List<String>
 
     @GetMapping("/{matchId}")
-    fun getMatchDetail(@PathVariable matchId: String, @RequestParam("api_key") apiKey: String): Any
+    fun getMatchDetail(@PathVariable matchId: String, @RequestParam("api_key") apiKey: String): RiotMatch
 }
