@@ -2,8 +2,14 @@ rootProject.name = "co"
 
 include (
     "domain",
+    "storage:core-mysql",
+    "storage:core-mongo",
+    "storage:redis",
     "api",
-    "mail",
+    "api:admin",
     "common",
-    "storage:core-mysql"
+    "common:enum",
+    "infrastructure",
+    "infrastructure:kafka",
+    "batch"
 )

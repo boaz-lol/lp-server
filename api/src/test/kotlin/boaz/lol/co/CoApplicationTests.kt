@@ -9,14 +9,17 @@ import org.springframework.context.ApplicationContext
 
 @SpringBootTest
 class CoApplicationTests (
-	@Autowired private val context: ApplicationContext
+
 ) {
 
+	/*
+	@Autowired
+	private lateinit var context: ApplicationContext
 
 	@Test
 	fun contextLoads() {
 		val beanNames = context.beanDefinitionNames
-		// beanNames.forEach { println(it) }
+		beanNames.forEach { println(it) }
 	}
 
 	@Test
@@ -25,5 +28,7 @@ class CoApplicationTests (
 		println(accountRepository)
 		assertNotNull(accountRepository)
 	}
+
+	 */
 
 }

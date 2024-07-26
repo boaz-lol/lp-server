@@ -44,3 +44,19 @@ storage/core-mysql/src/main/resources/application-db.yaml
 storage/core-mysql/src/main/resources/application.properties
 
 api/src/main/resources/application.yaml
+
+api/admin/src/main/resources/application.yaml
+
+storage/core-mysql/src/main/resources/application-mysql.yaml
+
+api/admin/src/main/resources/application-security.yaml
+
+infrastructure/src/main/resources/application-external.yaml
+
+storage/core-mongo/src/main/resources/application-mongo.yaml
+
+storage/redis/src/main/resources/application-redis.yaml
+
+batch/src/main/resources/application.yaml
+
+infrastructure/kafka/src/main/resources/application-kafka.yaml
